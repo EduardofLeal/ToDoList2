@@ -10,7 +10,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,12 +23,15 @@ import com.example.todolist2.db.TaskDBHelper;
 public class MainActivity extends AppCompatActivity {
 
     TaskDBHelper helper;
+    Button button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         updateUI();
+
+
     }
 
     private void updateUI(){
@@ -46,6 +51,8 @@ public class MainActivity extends AppCompatActivity {
                     new int[]{R.id.txtCelula},
                     0
             );
+            ListView listView = (ListView)findViewById(R.id.listaTarefas);
+            listView.setAdapter(listAdapter);
 
         }
         catch (Exception e)
